@@ -4,24 +4,23 @@ import Task from "./Task";
 import TaskHookForm from "./TaskHookForm";
 import PeopleForm from "./PeopleForm";
 import { initialTasks, initialTeam } from "./data";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 
 function App() {
   const [tasks, setTasks] = useState(initialTasks);
   const [team, setTeam] = useState(initialTeam);
 
   function handleTaskSubmit(yeniTask) {
-    setTasks([yeniTask, ...tasks])
+    setTasks([yeniTask, ...tasks]);
   }
 
   function handlePeopleSubmit(yeniKisi) {
-    setTeam([...team, yeniKisi])
+    setTeam([...team, yeniKisi]);
   }
 
   function handleComplete(id) {
     const tasksCopy = [...tasks];
-    const ilgiliTask = tasksCopy.filter(t => t.id === id)[0];
+    const ilgiliTask = tasksCopy.filter((t) => t.id === id)[0];
     ilgiliTask.status = "yapıldı";
     setTasks(tasksCopy);
 
@@ -29,9 +28,9 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app bg-gradient-to-r from-gray-100 to-gray-300">
       <div className="formColumn">
-        <div className="form-container">
+        <div className="form-container ">
           <h2>Yeni Task</h2>
           <TaskHookForm kisiler={team} submitFn={handleTaskSubmit} />
         </div>
@@ -63,7 +62,6 @@ function App() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
