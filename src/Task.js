@@ -5,15 +5,20 @@ import React from "react";
 const Task = ({ taskObj, onComplete }) => {
   const date = new Date(taskObj.deadline);
   const toNow = formatDistanceToNow(date, { addSuffix: true, locale: tr });
+  const dayarr = toNow.split(" ");
+  const days = dayarr[0];
 
   console.log(toNow);
 
   console.log(date);
 
+  console.log(days);
+
   return (
-    <div className="task">
+    <div className="task  bg-red-400 ">
       <h3>{taskObj.title}</h3>
-      <div className="deadline">
+
+      <div className={days <= 3 ? "deadline w-fit bg-[#ffd9d4]" : "deadline"}>
         son teslim: <span>{toNow}</span>
       </div>
       <p>{taskObj.description}</p>
